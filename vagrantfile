@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+vms = {
+'gandalf' => {'memory' => '758', 'cpus' => '1', 'ip' => '10', 'box' => 'gusztavvargadr/ubuntu-server-2404-lts', 'provision' => 'docker.sh'},
+'bilbo' => {'memory' => '1024', 'cpus' => '1', 'ip' => '11', 'box' => 'gusztavvargadr/ubuntu-server-2404-lts', 'provision' => 'docker.sh'},
+'frodo' => {'memory' => '2048', 'cpus' => '1', 'ip' => '12', 'box' => 'gusztavvargadr/ubuntu-server-2404-lts', 'provision' => 'docker.sh'}
+}
+
+Vagrant.configure('2') do |config|
+  vms.each do |name, conf|
+     config.vm.define "#{name}" do |my|
+       my.vm.box = conf['box']
+       my.vm.hostname = "#{name}.example.com"
+       my.vm.provision "shell", path: "docker.sh"
+       my.vm.provision "file", source: "projects/", destination: "$HOME/projects"
+       my.vm.network 'private_network', ip: "192.168.56.#{conf['ip']}"
+       my.vm.provider 'virtualbox' do |vb|
+          vb.memory = conf['memory']
+          vb.cpus = conf['cpus']
+       end
+     end
+  end
+end
