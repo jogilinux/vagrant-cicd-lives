@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 vms = {
 'gandalf' => {'memory' => '758', 'cpus' => '1', 'ip' => '10', 'box' => 'gusztavvargadr/ubuntu-server-2404-lts', 'provision' => 'docker.sh'},
-'bilbo' => {'memory' => '1024', 'cpus' => '1', 'ip' => '11', 'box' => 'gusztavvargadr/ubuntu-server-2404-lts', 'provision' => 'docker.sh'},
-'frodo' => {'memory' => '2048', 'cpus' => '1', 'ip' => '12', 'box' => 'gusztavvargadr/ubuntu-server-2404-lts', 'provision' => 'docker.sh'}
+'bilbo' => {'memory' => '3048', 'cpus' => '1', 'ip' => '11', 'box' => 'gusztavvargadr/ubuntu-server-2404-lts', 'provision' => 'docker.sh'},
+'frodo' => {'memory' => '1024', 'cpus' => '1', 'ip' => '12', 'box' => 'gusztavvargadr/ubuntu-server-2404-lts', 'provision' => 'docker.sh'}
 }
 
 Vagrant.configure('2') do |config|
